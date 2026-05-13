@@ -1,0 +1,21 @@
+﻿@page "{id:int}"
+@model RazorPagesAdvancedApp.Pages.Products.DetailsModel
+
+<h2>Product Details</h2>
+
+<div>
+    <p><strong>ID:</strong> @Model.Product.ProductID</p>
+
+    <p><strong>Name:</strong> @Model.Product.Name</p>
+
+    <p><strong>Description:</strong> @Model.Product.Description</p>
+
+    <h3>Categories</h3>
+
+    <ul>
+        @foreach (var category in Model.Product.Categories)
+        {
+            <li>@category.Name</li>
+        }
+    </ul>
+</div>

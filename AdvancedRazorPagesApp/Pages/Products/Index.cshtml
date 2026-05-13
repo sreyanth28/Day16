@@ -1,0 +1,55 @@
+﻿@page
+@model RazorPagesAdvancedApp.Pages.Products.IndexModel
+
+<h2>Add Product</h2>
+
+<form method="post">
+
+    <div>
+        <label>Product ID</label>
+        <input asp-for="NewProduct.ProductID" />
+    </div>
+
+    <div>
+        <label>Name</label>
+        <input asp-for="NewProduct.Name" />
+    </div>
+
+    <div>
+        <label>Description</label>
+        <input asp-for="NewProduct.Description" />
+    </div>
+
+    <h3>Categories</h3>
+
+    <div>
+        <label>Category 1</label>
+        <input asp-for="NewProduct.Categories[0].CategoryID" placeholder="ID" />
+        <input asp-for="NewProduct.Categories[0].Name" placeholder="Name" />
+    </div>
+
+    <div>
+        <label>Category 2</label>
+        <input asp-for="NewProduct.Categories[1].CategoryID" placeholder="ID" />
+        <input asp-for="NewProduct.Categories[1].Name" placeholder="Name" />
+    </div>
+
+    <button type="submit">Add Product</button>
+
+</form>
+
+<hr />
+
+<h2>Product List</h2>
+
+@foreach (var product in Model.ProductList)
+{
+    <partial name="_ProductSummary" model="product" />
+
+    <a asp-page="/Products/Details"
+           asp-route-id="@product.ProductID">
+        View Details
+    </a>
+
+    <hr />
+}
